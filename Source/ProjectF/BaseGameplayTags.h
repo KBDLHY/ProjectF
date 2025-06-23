@@ -6,4 +6,6 @@
 namespace BaseGameplayTags
 {
 	extern FNativeGameplayTag Input_Jump;
+
+	extern FNativeGameplayTag Ability_Jump;
 }
