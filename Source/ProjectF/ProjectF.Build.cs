@@ -8,7 +8,16 @@ public class ProjectF : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
+		PublicDependencyModuleNames.AddRange(new string[]
+		{
+			"Core",
+			"CoreUObject",
+            "Engine",
+            "InputCore",
+            "GameplayAbilities",
+            "GameplayTasks",
+            "GameplayTags"
+		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
