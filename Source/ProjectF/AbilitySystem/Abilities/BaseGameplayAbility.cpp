@@ -3,6 +3,8 @@
 
 #include "BaseGameplayAbility.h"
 
+#include UE_INLINE_GENERATED_CPP_BY_NAME(BaseGameplayAbility)
+
 UBaseGameplayAbility::UBaseGameplayAbility()
 {
 	ReplicationPolicy = EGameplayAbilityReplicationPolicy::ReplicateNo;

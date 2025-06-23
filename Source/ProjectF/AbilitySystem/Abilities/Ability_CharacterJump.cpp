@@ -7,6 +7,8 @@
 #include "GameFramework/Character.h"
 #include "ProjectF/BaseGameplayTags.h"
 
+#include UE_INLINE_GENERATED_CPP_BY_NAME(Ability_CharacterJump)
+
 UAbility_CharacterJump::UAbility_CharacterJump()
 {
 	SetAssetTags(FGameplayTagContainer(BaseGameplayTags::Ability_Jump));
