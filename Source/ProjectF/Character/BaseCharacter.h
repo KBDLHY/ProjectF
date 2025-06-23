@@ -7,6 +7,8 @@
 #include "GameFramework/Character.h"
 #include "BaseCharacter.generated.h"
 
+class UCameraComponent;
+class USpringArmComponent;
 class UBaseAttributeSet;
 class UBaseAbilitySystemComponent;
 
@@ -32,4 +34,10 @@ protected:
 	TObjectPtr<UBaseAttributeSet> AttributeSet;
 
 	void InitAbilitySystem();
+
+	UPROPERTY(VisibleAnywhere)
+	TObjectPtr<USpringArmComponent> SpringArmComponent;
+	
+	UPROPERTY(VisibleAnywhere)
+	TObjectPtr<UCameraComponent> CameraComponent;
 };

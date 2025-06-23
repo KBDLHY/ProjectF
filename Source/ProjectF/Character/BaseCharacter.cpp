@@ -3,7 +3,9 @@
 
 #include "BaseCharacter.h"
 
+#include "Camera/CameraComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "ProjectF/BaseGameplayTags.h"
 #include "ProjectF/AbilitySystem/BaseAbilitySystemComponent.h"
 #include "ProjectF/AbilitySystem/Abilities/Ability_CharacterJump.h"
@@ -36,6 +38,15 @@ ABaseCharacter::ABaseCharacter()
 	GetCharacterMovement()->NavAgentProps.bCanCrouch = true;
 	GetCharacterMovement()->bCanWalkOffLedgesWhenCrouching = true;
 	GetCharacterMovement()->SetCrouchedHalfHeight(65.f);
+
+	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmComponent"));
+	SpringArmComponent->SetupAttachment(GetRootComponent());
+	SpringArmComponent->SetRelativeRotation(FRotator(-45.f, 0.f, 0.f));
+	SpringArmComponent->TargetArmLength = 450.f;
+	
+	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
+	CameraComponent->SetupAttachment(SpringArmComponent);
+	CameraComponent->SetRelativeLocation(FVector(0.f, 70.f, 0.f));
 }
 
 void ABaseCharacter::PossessedBy(AController* NewController)
