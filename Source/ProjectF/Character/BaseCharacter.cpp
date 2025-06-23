@@ -3,6 +3,7 @@
 
 #include "BaseCharacter.h"
 
+#include "GameFramework/CharacterMovementComponent.h"
 #include "ProjectF/BaseGameplayTags.h"
 #include "ProjectF/AbilitySystem/BaseAbilitySystemComponent.h"
 #include "ProjectF/AbilitySystem/Abilities/Ability_CharacterJump.h"
@@ -12,7 +13,29 @@
 
 ABaseCharacter::ABaseCharacter()
 {
+	SpawnCollisionHandlingMethod = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 	
+	BaseEyeHeight = 80.f;
+	CrouchedEyeHeight = 50.f;
+	bUseControllerRotationPitch = false;
+	bUseControllerRotationYaw = true;
+	bUseControllerRotationRoll = false;
+
+	GetCharacterMovement()->bOrientRotationToMovement = false;
+	GetCharacterMovement()->bUseControllerDesiredRotation = false;
+	GetCharacterMovement()->bAllowPhysicsRotationDuringAnimRootMotion = false;
+	GetCharacterMovement()->MaxWalkSpeed = 600.f;
+	GetCharacterMovement()->MaxWalkSpeedCrouched = 300.f;
+	GetCharacterMovement()->GravityScale = 1.f;
+	GetCharacterMovement()->MaxAcceleration = 2400.f;
+	GetCharacterMovement()->BrakingFrictionFactor = 1.f;
+	GetCharacterMovement()->BrakingFriction = 6.f;
+	GetCharacterMovement()->GroundFriction = 8.f;
+	GetCharacterMovement()->BrakingDecelerationWalking = 1400.f;
+	GetCharacterMovement()->RotationRate.Yaw = 720.f;
+	GetCharacterMovement()->NavAgentProps.bCanCrouch = true;
+	GetCharacterMovement()->bCanWalkOffLedgesWhenCrouching = true;
+	GetCharacterMovement()->SetCrouchedHalfHeight(65.f);
 }
 
 void ABaseCharacter::PossessedBy(AController* NewController)
