@@ -16,7 +16,8 @@ public class ProjectF : ModuleRules
             "InputCore",
             "GameplayAbilities",
             "GameplayTasks",
-            "GameplayTags"
+            "GameplayTags",
+            "EnhancedInput"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
