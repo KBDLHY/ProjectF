@@ -43,6 +43,7 @@ ABaseCharacter::ABaseCharacter()
 	SpringArmComponent->SetupAttachment(GetRootComponent());
 	SpringArmComponent->SetRelativeRotation(FRotator(-45.f, 0.f, 0.f));
 	SpringArmComponent->TargetArmLength = 450.f;
+	SpringArmComponent->bUsePawnControlRotation = true;
 	
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
 	CameraComponent->SetupAttachment(SpringArmComponent);

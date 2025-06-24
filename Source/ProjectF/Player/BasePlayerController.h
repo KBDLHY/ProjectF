@@ -7,6 +7,7 @@
 #include "GameFramework/PlayerController.h"
 #include "BasePlayerController.generated.h"
 
+struct FInputActionValue;
 class UBaseAbilitySystemComponent;
 class UInputData;
 
@@ -22,6 +23,8 @@ public:
 protected:
 	virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;
+	void Input_Move(const FInputActionValue& InputValue);
+	void Input_Look(const FInputActionValue& InputValue);
 
 private:
 	UPROPERTY()

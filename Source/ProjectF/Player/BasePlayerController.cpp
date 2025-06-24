@@ -5,6 +5,8 @@
 
 #include "BasePlayerState.h"
 #include "EnhancedInputSubsystems.h"
+#include "Kismet/KismetMathLibrary.h"
+#include "ProjectF/BaseGameplayTags.h"
 #include "ProjectF/AbilitySystem/BaseAbilitySystemComponent.h"
 #include "ProjectF/Data/InputData.h"
 #include "ProjectF/Input/BaseInputComponent.h"
@@ -51,10 +53,32 @@ void ABasePlayerController::SetupInputComponent()
 	UBaseInputComponent* FPInputComponent = CastChecked<UBaseInputComponent>(InputComponent);
 
 	// Bind Native Inputs
-	// TODO
-
+	FPInputComponent->BindNativeAction(InputData, BaseGameplayTags::Input_Move, ETriggerEvent::Triggered, this, &ThisClass::Input_Move);
+	FPInputComponent->BindNativeAction(InputData, BaseGameplayTags::Input_Look, ETriggerEvent::Triggered, this, &ThisClass::Input_Look);
+	
 	// Bind Ability Inputs
 	FPInputComponent->BindAbilityActions(InputData, this, &ThisClass::Input_AbilityInputTagPressed, &ThisClass::Input_AbilityInputTagReleased);
+}
+
+void ABasePlayerController::Input_Move(const FInputActionValue& InputValue)
+{
+	if (GetPawn())
+	{
+		const FRotator Rotation = GetPawn()->GetControlRotation();
+		const FVector RightDir = UKismetMathLibrary::GetRightVector(FRotator(0.f, Rotation.Yaw, 0.f));
+		const FVector ForwardDir = UKismetMathLibrary::GetForwardVector(FRotator(0.f, Rotation.Yaw, 0.f));
+		GetPawn()->AddMovementInput(RightDir, InputValue.Get<FVector2D>().X);
+		GetPawn()->AddMovementInput(ForwardDir, InputValue.Get<FVector2D>().Y);
+	}
+}
+
+void ABasePlayerController::Input_Look(const FInputActionValue& InputValue)
+{
+	if (GetPawn())
+	{
+		GetPawn()->AddControllerYawInput(InputValue.Get<FVector2D>().X);
+		GetPawn()->AddControllerPitchInput(InputValue.Get<FVector2D>().Y);
+	}
 }
 
 void ABasePlayerController::Input_AbilityInputTagPressed(FGameplayTag InputTag)
