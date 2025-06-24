@@ -8,6 +8,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "ProjectF/BaseGameplayTags.h"
 #include "ProjectF/AbilitySystem/BaseAbilitySystemComponent.h"
+#include "ProjectF/AbilitySystem/Abilities/Ability_CharacterCrouch.h"
 #include "ProjectF/AbilitySystem/Abilities/Ability_CharacterJump.h"
 #include "ProjectF/Player/BasePlayerState.h"
 
@@ -91,9 +92,13 @@ void ABaseCharacter::InitAbilitySystem()
 	// TODO : For Test
 	if (HasAuthority() && AbilitySystemComponent)
 	{
-		FGameplayAbilitySpec Spec(UAbility_CharacterJump::StaticClass());
-		Spec.GetDynamicSpecSourceTags().AddTag(BaseGameplayTags::Input_Jump);
-		AbilitySystemComponent->GiveAbility(Spec);
+		FGameplayAbilitySpec JumpSpec(UAbility_CharacterJump::StaticClass());
+		JumpSpec.GetDynamicSpecSourceTags().AddTag(BaseGameplayTags::Input_Jump);
+		AbilitySystemComponent->GiveAbility(JumpSpec);
+
+		FGameplayAbilitySpec CrouchSpec(UAbility_CharacterCrouch::StaticClass());
+		CrouchSpec.GetDynamicSpecSourceTags().AddTag(BaseGameplayTags::Input_Crouch);
+		AbilitySystemComponent->GiveAbility(CrouchSpec);
 	}
 }
 
