@@ -10,6 +10,7 @@
 #include "ProjectF/AbilitySystem/BaseAbilitySystemComponent.h"
 #include "ProjectF/AbilitySystem/Abilities/Ability_CharacterCrouch.h"
 #include "ProjectF/AbilitySystem/Abilities/Ability_CharacterJump.h"
+#include "ProjectF/AbilitySystem/Abilities/Ability_CharacterRun.h"
 #include "ProjectF/Player/BasePlayerState.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(BaseCharacter)
@@ -21,25 +22,30 @@ ABaseCharacter::ABaseCharacter()
 	BaseEyeHeight = 80.f;
 	CrouchedEyeHeight = 50.f;
 	bUseControllerRotationPitch = false;
-	bUseControllerRotationYaw = true;
+	bUseControllerRotationYaw = false;
 	bUseControllerRotationRoll = false;
-
-	GetCharacterMovement()->bOrientRotationToMovement = false;
-	GetCharacterMovement()->bUseControllerDesiredRotation = false;
-	GetCharacterMovement()->bAllowPhysicsRotationDuringAnimRootMotion = false;
-	GetCharacterMovement()->MaxWalkSpeed = 600.f;
-	GetCharacterMovement()->MaxWalkSpeedCrouched = 300.f;
+	
+	// CharacterMovement (General Settings)
 	GetCharacterMovement()->GravityScale = 1.f;
 	GetCharacterMovement()->MaxAcceleration = 2400.f;
 	GetCharacterMovement()->BrakingFrictionFactor = 1.f;
 	GetCharacterMovement()->BrakingFriction = 6.f;
-	GetCharacterMovement()->GroundFriction = 8.f;
-	GetCharacterMovement()->BrakingDecelerationWalking = 1400.f;
-	GetCharacterMovement()->RotationRate.Yaw = 720.f;
-	GetCharacterMovement()->NavAgentProps.bCanCrouch = true;
-	GetCharacterMovement()->bCanWalkOffLedgesWhenCrouching = true;
 	GetCharacterMovement()->SetCrouchedHalfHeight(65.f);
-
+	// CharacterMovement: Walking
+	GetCharacterMovement()->GroundFriction = 8.f;
+	GetCharacterMovement()->MaxWalkSpeed = 300.f;
+	GetCharacterMovement()->MaxWalkSpeedCrouched = 200.f;
+	GetCharacterMovement()->BrakingDecelerationWalking = 1400.f;
+	GetCharacterMovement()->bCanWalkOffLedgesWhenCrouching = true;
+	// CharacterMovement: Rotation Settings
+	GetCharacterMovement()->RotationRate.Yaw = 560.f;
+	GetCharacterMovement()->bUseControllerDesiredRotation = false;
+	GetCharacterMovement()->bOrientRotationToMovement = true;
+	// CharacterMovement: RootMotion
+	GetCharacterMovement()->bAllowPhysicsRotationDuringAnimRootMotion = false;
+	// CharacterMovement: NavMovement
+	GetCharacterMovement()->NavAgentProps.bCanCrouch = true;
+	
 	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmComponent"));
 	SpringArmComponent->SetupAttachment(GetRootComponent());
 	SpringArmComponent->SetRelativeRotation(FRotator(-45.f, 0.f, 0.f));
@@ -99,6 +105,10 @@ void ABaseCharacter::InitAbilitySystem()
 		FGameplayAbilitySpec CrouchSpec(UAbility_CharacterCrouch::StaticClass());
 		CrouchSpec.GetDynamicSpecSourceTags().AddTag(BaseGameplayTags::Input_Crouch);
 		AbilitySystemComponent->GiveAbility(CrouchSpec);
+
+		FGameplayAbilitySpec RunSpec(UAbility_CharacterRun::StaticClass());
+		RunSpec.GetDynamicSpecSourceTags().AddTag(BaseGameplayTags::Input_Run);
+		AbilitySystemComponent->GiveAbility(RunSpec);
 	}
 }
 
