@@ -15,7 +15,7 @@ struct FFrame;
 struct FGameplayTag;
 
 /**
- * ULyraInventoryItemInstance
+ * UInventoryItemInstance
  */
 UCLASS(BlueprintType)
 class UInventoryItemInstance : public UObject
@@ -67,7 +67,7 @@ private:
 
 	void SetItemDef(TSubclassOf<UInventoryItemDefinition> InDef);
 
-	friend struct FLyraInventoryList;
+	friend struct FInventoryList;
 
 private:
 	UPROPERTY(Replicated)

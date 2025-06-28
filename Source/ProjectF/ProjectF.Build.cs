@@ -32,6 +32,8 @@ public class ProjectF : ModuleRules
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
 			"NetCore",
+			"Slate",
+			"SlateCore",
 			"GameplayMessageRuntime"
 		});
 		

@@ -15,8 +15,8 @@
 class FLifetimeProperty;
 class UEquipmentDefinition;
 
-UE_DEFINE_GAMEPLAY_TAG_STATIC(TAG__QuickBar_Message_SlotsChanged, ".QuickBar.Message.SlotsChanged");
-UE_DEFINE_GAMEPLAY_TAG_STATIC(TAG__QuickBar_Message_ActiveIndexChanged, ".QuickBar.Message.ActiveIndexChanged");
+UE_DEFINE_GAMEPLAY_TAG_STATIC(TAG__QuickBar_Message_SlotsChanged, "ProjectF.QuickBar.Message.SlotsChanged");
+UE_DEFINE_GAMEPLAY_TAG_STATIC(TAG__QuickBar_Message_ActiveIndexChanged, "ProjectF.QuickBar.Message.ActiveIndexChanged");
 
 UQuickBarComponent::UQuickBarComponent(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
