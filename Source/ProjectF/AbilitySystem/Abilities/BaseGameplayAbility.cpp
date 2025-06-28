@@ -5,7 +5,8 @@
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(BaseGameplayAbility)
 
-UBaseGameplayAbility::UBaseGameplayAbility()
+UBaseGameplayAbility::UBaseGameplayAbility(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
 {
 	ReplicationPolicy = EGameplayAbilityReplicationPolicy::ReplicateNo;
 	InstancingPolicy = EGameplayAbilityInstancingPolicy::InstancedPerActor;

@@ -34,7 +34,7 @@ class PROJECTF_API UBaseGameplayAbility : public UGameplayAbility
 	GENERATED_BODY()
 
 public:
-	UBaseGameplayAbility();
+	UBaseGameplayAbility(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 
 	EAbilityActivationPolicy GetActivationPolicy() const { return ActivationPolicy; }
 

@@ -23,10 +23,17 @@ public class ProjectF : ModuleRules
             "GameplayAbilities",
             "GameplayTasks",
             "GameplayTags",
-            "EnhancedInput"
+            "EnhancedInput",
+            "ModularGameplay",
+            "ModularGameplayActors",
+            "Niagara"
 		});
 
-		PrivateDependencyModuleNames.AddRange(new string[] {  });
+		PrivateDependencyModuleNames.AddRange(new string[]
+		{
+			"NetCore",
+			"GameplayMessageRuntime"
+		});
 		
 		SetupIrisSupport(Target);
 
