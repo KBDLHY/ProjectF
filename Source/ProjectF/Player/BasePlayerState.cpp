@@ -4,7 +4,7 @@
 #include "BasePlayerState.h"
 
 #include "ProjectF/AbilitySystem/BaseAbilitySystemComponent.h"
-#include "ProjectF/AbilitySystem/BaseAttributeSet.h"
+#include "ProjectF/AbilitySystem/Attributes/BaseAttributeSet.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(BasePlayerState)
 

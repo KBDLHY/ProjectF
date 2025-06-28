@@ -15,7 +15,7 @@
 class FLifetimeProperty;
 struct FReplicationFlags;
 
-UE_DEFINE_GAMEPLAY_TAG_STATIC(TAG__Inventory_Message_StackChanged, "ProjectF.Inventory.Message.StackChanged");
+UE_DEFINE_GAMEPLAY_TAG_STATIC(TAG_ProjectF_Inventory_Message_StackChanged, "ProjectF.Inventory.Message.StackChanged");
 
 //////////////////////////////////////////////////////////////////////
 // FInventoryEntry
@@ -74,7 +74,7 @@ void FInventoryList::BroadcastChangeMessage(FInventoryEntry& Entry, int32 OldCou
 	Message.Delta = NewCount - OldCount;
 
 	UGameplayMessageSubsystem& MessageSystem = UGameplayMessageSubsystem::Get(OwnerComponent->GetWorld());
-	MessageSystem.BroadcastMessage(TAG__Inventory_Message_StackChanged, Message);
+	MessageSystem.BroadcastMessage(TAG_ProjectF_Inventory_Message_StackChanged, Message);
 }
 
 UInventoryItemInstance* FInventoryList::AddEntry(TSubclassOf<UInventoryItemDefinition> ItemDef, int32 StackCount)

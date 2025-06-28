@@ -34,7 +34,9 @@ public class ProjectF : ModuleRules
 			"NetCore",
 			"Slate",
 			"SlateCore",
-			"GameplayMessageRuntime"
+			"GameplayMessageRuntime",
+			"UMG",
+			"CommonUI"
 		});
 		
 		SetupIrisSupport(Target);

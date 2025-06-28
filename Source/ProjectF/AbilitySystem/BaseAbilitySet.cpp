@@ -4,7 +4,7 @@
 
 #include "AbilitySystem/Abilities/BaseGameplayAbility.h"
 #include "BaseAbilitySystemComponent.h"
-#include "BaseLogChannels.h"
+#include "LogChannels.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(BaseAbilitySet)
 

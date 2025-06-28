@@ -37,6 +37,9 @@ public:
 	UBaseGameplayAbility(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 
 	EAbilityActivationPolicy GetActivationPolicy() const { return ActivationPolicy; }
+	
+	UFUNCTION(BlueprintCallable, Category = "ProjectF|Ability")
+	AController* GetControllerFromActorInfo() const;
 
 protected:
 	UPROPERTY(EditDefaultsOnly)
