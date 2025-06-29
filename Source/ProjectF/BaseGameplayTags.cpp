@@ -14,4 +14,14 @@ namespace BaseGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Ability_Look, TEXT("Ability.Look"));
 	UE_DEFINE_GAMEPLAY_TAG(Ability_Crouch, TEXT("Ability.Crouch"));
 	UE_DEFINE_GAMEPLAY_TAG(Ability_Run, TEXT("Ability.Run"));
+
+	UE_DEFINE_GAMEPLAY_TAG(GameplayCue_Interact_WeaponPickup, TEXT("GameplayCue.Interact.WeaponPickup"));
+
+	UE_DEFINE_GAMEPLAY_TAG(Event_Movement_Reload, TEXT("Event.Movement.Reload"));
+
+	UE_DEFINE_GAMEPLAY_TAG(Weapon_MagazineSize, TEXT("Weapon.MagazineSize"));
+	UE_DEFINE_GAMEPLAY_TAG(Weapon_MagazineAmmo, TEXT("Weapon.MagazineAmmo"));
+	UE_DEFINE_GAMEPLAY_TAG(Weapon_SpareAmmo, TEXT("Weapon.SpareAmmo"));
+	
+	UE_DEFINE_GAMEPLAY_TAG(Cosmetic_AnimationStyle, TEXT("Cosmetic.AnimationStyle"));
 }
