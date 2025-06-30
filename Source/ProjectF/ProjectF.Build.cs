@@ -17,8 +17,11 @@ public class ProjectF : ModuleRules
             "GameplayAbilities",
             "GameplayTasks",
             "GameplayTags",
-            "EnhancedInput"
+            "EnhancedInput",
+            "GameLiftServerSDK"
 		});
+		
+		bEnableExceptions =  true;
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
