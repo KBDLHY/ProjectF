@@ -26,7 +26,8 @@ public class ProjectF : ModuleRules
             "EnhancedInput",
             "ModularGameplay",
             "ModularGameplayActors",
-            "Niagara"
+            "Niagara",
+            "GameFeatures"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[]
